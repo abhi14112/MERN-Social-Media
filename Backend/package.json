@@ -4,6 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build":"npx babel src --out-dir dist",
+    "start":"node index.js",
     "dev": "npx nodemon index.js"
   },
   "author": "",
