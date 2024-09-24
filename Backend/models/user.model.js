@@ -57,11 +57,11 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 }
-userSchema.virtual('followingCount').get(function () {
-    return this.following.length;
-})
-userSchema.virtual('followersCount').get(function () {
-    return this.followers.length;
-})
+// userSchema.virtual('followingCount').get(function () {
+//     return this.following.length;
+// })
+// userSchema.virtual('followersCount').get(function () {
+//     return this.followers.length;
+// })
 const User = mongoose.model("User", userSchema);
 export default User;
