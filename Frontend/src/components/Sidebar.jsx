@@ -6,8 +6,9 @@ import SidebarItem from './SidebarItem'
 import { BiLogOut } from 'react-icons/bi'
 import { FaFeather } from 'react-icons/fa'
 import { logout } from '../Redux/userSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 const Sidebar = () => {
+  let {user} = useSelector((state)=>state.user);
   const dispatch = useDispatch();
   const handleLogout = ()=>{
     dispatch(logout());
@@ -25,13 +26,13 @@ const Sidebar = () => {
     },
     {
       label: 'Profile',
-      href: '/profile',
+      href: `/profile/${user._id}`,
       icon: FaUser
     }
   ];
   return (
     <div className='md:flex  flex-col  p-2 gap-4 items-center md:items-start '>
-    <div className='w-max  justify-center rounded-full p-3 hover:bg-slate-400 hover:bg-opacity-15'>
+    <div className='w-max cursor-pointer  justify-center rounded-full p-3 hover:bg-slate-400 hover:bg-opacity-15'>
       <BsTwitter color='white' size={28} />
     </div>
       <div>

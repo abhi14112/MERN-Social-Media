@@ -14,7 +14,7 @@ const App = () => {
         <Route path='/' element={<PrivateRoute>
           <Home/>
         </PrivateRoute>} />
-        <Route path='/profile'
+        <Route path='/profile/:id'
           element={<PrivateRoute>
             <Profile/>
           </PrivateRoute>}

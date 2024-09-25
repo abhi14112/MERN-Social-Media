@@ -7,7 +7,7 @@ router.post("/signup", register);
 router.get("/tofollow",protectRoute,getUsers);
 router.post("/login", login);
 router.post("/logout", logoutUser)
-router.post("/follow/:id", protectRoute, followUnfollowUser);
+router.put("/follow/:id", protectRoute, followUnfollowUser);
 router.put("/update/:id", protectRoute, updateUser);
 router.get("/getuser",getUserProfile);
 export default router;

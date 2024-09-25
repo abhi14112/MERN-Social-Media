@@ -9,16 +9,29 @@ const getUserProfile = async (req, res) => {
     try {
         let user;
         if (mongoose.Types.ObjectId.isValid(query)) {
-            user = await User.findOne({ _id: query }).select("-password");
+            // Find user by ID and populate followers and following
+            user = await User.findOne({ _id: query })
+                .select("-password")
+                .populate('followers', 'username profilePic')
+                .populate('following', 'username profilePic');
         } else {
-            user = await User.findOne({ username: query }).select("-password");
+            // Find user by username and populate followers and following
+            user = await User.findOne({ username: query })
+                .select("-password")
+                .populate('followers', 'username profilePic')
+                .populate('following', 'username profilePic');
         }
-        if (!user) return res.status(404).json({ error: "User not found" });
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
         return res.status(200).json(user);
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
-}
+};
+
 const getUsers = async (req, res) => {
     try {
         const userId = req.user._id; 

@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <div className='border-b-[1px] border-zinc-700 p-3'>
             {location.pathname == "/" ? <p className='font-semibold text-xl'>Home</p> :
-            <div className='hover:cursor-pointer' onClick={()=>{navigate("/home")}}>
+            <div className='hover:cursor-pointer' onClick={()=>{navigate("/")}}>
                 <BiArrowBack color="white" size={20} />
             </div>
             }
