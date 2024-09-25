@@ -4,7 +4,7 @@ import {
 } from "../controllers/postController.js";
 import protectRoute from "../middlewares/protectRoute.js";
 const router = express.Router();
-router.get("/feed", protectRoute, getFeedPosts);
+router.get("/feed", getFeedPosts);
 router.get("/new", protectRoute, getNewPosts);
 router.post("/create",protectRoute, createPost);
 router.get("/:id", getPost);
